@@ -48,4 +48,24 @@ public class HomeController {
   public String intro() {
     return "/intro/aboutus";
   }
+  @GetMapping("/greeting")
+  public String greeting() {
+    return "/intro/greeting";
+  }
+  @GetMapping("/ideology")
+  public String ideology() {
+    return "/intro/ideology";
+  }
+  @GetMapping("/cleaners")
+  public String cleaners() {
+    return "/intro/cleaners";
+  }
+  @GetMapping("/greenflu")
+  public String greenflu() {
+    return "/intro/greenflu";
+  }
+  @GetMapping("/joe")
+  public String joe() {
+    return "/intro/joeferro";
+  }
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns:th="ww.thymeleaf.org">
+  <head th:replace="/include/include.html :: head"></head>
+  <body>
+    <header th:replace="/include/include.html :: header"></header>
+    <main class="main">
+      <!-- <section th:replace="/include/include.html :: sub-header"></section> -->
+      <section class="join__title">
+        <div class="container">
+          <h1>우리는 CLEANERS입니다!!</h1>
+        </div>
+      </section>
+      <section class="join__contents">
+        <div class="container">
+          <span>클리너들에 대한 설명</span>
+          <span>클리너들의 활동사진</span>
+        </div>
+      </section>
+    </main>
+    <footer th:replace="include/include.html :: footer"></footer>
+  </body>
+</html>
