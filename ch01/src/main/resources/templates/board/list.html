@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns="http://www.thymeleaf.org">
+<head th:replace="/include/include.html :: head">
+</head>
+<body>
+    <header th:replace="/include/include.html :: header"></header>
+
+    <main class="main">
+        <p>list입니다.</p>
+        <div class="container">
+           <div class="board-title">
+               <h1 class="board-title-txt">우리와 소통하십시오!</h1>
+           </div>
+           <div class="board-contents">
+               <ul class="board__list">
+                    
+                    <li class="board__list-item">
+                        <span class="board__list-item-postNo">No.</span>
+                        <span class="board__list-item-postTitle">글 제목</span>
+                        <span class="board__list-item-postAuth">작성자</span>
+                        <span class="board__list-item-postDate">작성 일자</span>
+                    </li>
+                    <li class="board__list-item" th:Each="item : ${boardList}">
+                        <span class="board__list-item-postNo">${item.postNo}</span>
+                        <span class="board__list-item-postTitle"><a href="/board/view?postNo=${item.postNo }">${item.postTitle }</a></span>
+                        <span class="board__list-item-postAuth">${item.postAuth }</span>
+                        <span class="board__list-item-postDate">${item.regDate }</span>
+                    </li>
+                              
+               </ul>
+               <li class="btn btn-write"><a href="/board/write">글쓰기</a></li>
+               <ul class="board__list-page">
+                   <li class="btn btn_pre"><a class="btn ${pageInfo.page == 1 ? 'off' : '' }" href="/board/list?page=1">처음 페이지</a></li>
+                   <li class="btn btn_pre"><a class="btn ${pageInfo.pagePre == 0 ? 'off' : '' }" href="/board/list?page=${pageInfo.pagePre}">이전 열 페이지</a></li>
+
+                   <li class="board__list-page__num ${pageInfo.page==page ? 'active' : ''}" th:each="num : ${pageUnfo}"><a href="/board/list?page=${num.page}">${num.page}</a></li>
+                   <li class="btn btn_nxt"><a class="btn ${pageInfo.pageNxt == 0 ? 'off' : '' } href="href="/board/list?page=${pageInfo.pageNxt}">다음 열 페이지</a></li>
+                   <li class="btn btn_nxt"><a class="btn ${pageInfo.page == pageInfo.pageEnd ? 'off' : '' } href="href="/board/list?page=${pageInfo.pageEnd}">마지막 페이지</a></li>
+               </ul>
+           </div>
+       </div>
+    </main>
+    
+    <footer th:replace="/include/include.html :: footer"></footer>
+</body>
+</html>

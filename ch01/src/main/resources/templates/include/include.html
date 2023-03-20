@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="kor" xmlns:th="http://www.thymeleaf.org">
+  <head th:fragment="head">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/board.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
+    <script src="/js/jquery-3.6.3.min.js"></script>
+  </head>
+
+  <body>
+    <header class="header" th:fragment="header">
+      <div class="container">
+        <div class="header-left">
+          <a href="/" class="header_left__logo logo-header">
+            <h1 class="logo-img-header"></h1>
+            <h1 class="logo-text-header">WE"RE CLEANER!!</h1>
+          </a>
+        </div>
+        <div class="header-center">
+          <ul class="header-center__gnb gbn">
+            <li class="header-center__gnb-mainmenu mainMenu">
+              <a href="/intro">우리는 누구?</a>
+              <p class="mainMenu__back">
+                <span class="mainMenu__back-fill"></span>
+              </p>
+              <ul class="header-center__gnb-submenu subMenuContainer">
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="/member/list">
+                    <p class="subMenu__txt">
+                      CLEANERS 인사말
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="/board/list">
+                    <p class="subMenu__txt">
+                      조직 이념
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="/intro">
+                    <p class="subMenu__txt">
+                      CLEANERS에 대하여
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      GREEN FLU에 대하여
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      JOE FERRO에 대하여
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="header-center__gnb-mainmenu mainMenu">
+              <a href="#">우리는 무엇을 하는가?</a>
+              <p class="mainMenu__back">
+                <span class="mainMenu__back-fill"></span>
+              </p>
+              <ul class="header-center__gnb-submenu subMenuContainer">
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      환경정화활동
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      신속방역서비스
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      대리방화서비스
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      출장방화서비스
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="header-center__gnb-mainmenu mainMenu">
+              <a href="#">우리의 시설들!</a>
+              <p class="mainMenu__back">
+                <span class="mainMenu__back-fill"></span>
+              </p>
+              <ul class="header-center__gnb-submenu subMenuContainer">
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      우리의 장비
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      우리의 거점
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="header-center__gnb-mainmenu mainMenu">
+              <a href="/board/list">우리의 활동!</a>
+              <p class="mainMenu__back">
+                <span class="mainMenu__back-fill"></span>
+              </p>
+              <ul class="header-center__gnb-submenu subMenuContainer">
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      CLEANERS 활동사진
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      CLEANERS 활동영상
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      CLEANERS 게시판
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="header-center__gnb-mainmenu mainMenu">
+              <a href="#">우리를 찾아오라!</a>
+              <p class="mainMenu__back">
+                <span class="mainMenu__back-fill"></span>
+              </p>
+              <ul class="header-center__gnb-submenu subMenuContainer">
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      오시는 길
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      채용 정보
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+                <li class="header-center__gnb-submenu subMenu">
+                  <a href="">
+                    <p class="subMenu__txt">
+                      채용 상담
+                      <span class="subMenu__line"></span>
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="header-right">
+          <h2 class="hidden"></h2>
+          <span class="btn-header btn-header-left join">
+            <a href="../member/join">회원가입</a>
+          </span>
+          <span class="btn-header btn-header-right login">
+            <a href="../member/login">로그인</a>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="main-visual">
+        <div class="container">
+          <div class="swiper visualSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <h1 class="title title-visual">잘 오셨습니다 형제님!</h1>
+                <span class="desc desc-visual"
+                  >우리는 새로운 뉴욕의 차가운 어둠을 밝히는 CLEANERS
+                  입니다!</span
+                >
+                <img
+                  src="/images/cleaner-man.jpg"
+                  alt="환경정화를 하는 클리너들"
+                  class="img-visual"
+                />
+              </div>
+              <div class="swiper-slide">
+                <h1 class="title title-visual">우리를 부르십시오!</h1>
+                <span class="desc desc-visual"
+                  >준비된 CLEANERS가 형제님의 곁으로 달려갑니다!</span
+                >
+                <img
+                  src="/images/cleaners.jpg"
+                  alt="출동 준비를 마친 클리너들"
+                  class="img-visual"
+                />
+              </div>
+              <div class="swiper-slide">
+                <h1 class="title title-visual">우리는 두렵지 않습니다!</h1>
+                <span class="desc desc-visual"
+                  >우리는 우리의 방해꾼들의 시체 너머에서 희망을 발견할
+                  것입니다!</span
+                >
+                <img
+                  src="/images/cleaners-fight-3.jpg"
+                  alt="교전중인 클리너들"
+                  class="img-visual"
+                />
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination pagination-visual"></div>
+          </div>
+        </div>
+      </section>
+      <!--                                main-visual                                          -->
+
+      <section class="main-subTitle">
+        <div class="container"></div>
+      </section>
+      <!--                                main-subTitle                                        -->
+
+      <section class="main-intro">
+        <div class="container intro-visual">
+          <div class="contents-intro">
+            <h1 class="title title-intro">Who are CLEANERS?</h1>
+            <p class="desc desc-intro">
+              그린 플루 사태 이후, 우리는 너무도 많은 이들을 떠나보냈습니다.
+            </p>
+            <br />
+            <p class="desc desc-intro">
+              이제 Joe Ferro 와 CLEANERS가 희망의 불꽃을 밝힙니다.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!--                                main-intro                                           -->
+
+      <section class="main-work" data-aos="fade-up" data-aos-delay="150">
+        <div class="container">
+          <div class="descript descript_work">
+            <div class="col-lg-12">
+              <div class="title-between">
+                <h2 class="title title-work">Our Products</h2>
+                <p class="desc desc-work">
+                  선박과 항만을 <strong>유기적인 관계</strong>로 기획하고
+                  <strong>제품을 구현</strong>합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row visual visual_work">
+            <div class="col-lg-4">
+              <a class="work-thumnail" href="">
+                <h2>CLEANS</h2>
+                <h4>환경 정화</h4>
+
+                <div class="more">
+                  <img src="/img/ic-plus-light.svg" alt="" class="img-work" />
+                </div>
+                <div class="image">
+                  <p></p>
+                  <img src="/images/cleaner-hd.jpg" alt="" class="img-work" />
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4">
+              <a class="work-thumnail" href="">
+                <h2>POLICING</h2>
+                <h4>치안 유지</h4>
+
+                <div class="more">
+                  <img src="/img/ic-plus-light.svg" alt="" />
+                </div>
+                <div class="image">
+                  <p></p>
+                  <img src="/images/cleaners-work-5.jpg" alt="" />
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4">
+              <a class="work-thumnail" href="">
+                <h2>DISPATCH</h2>
+                <h4>출장 방화</h4>
+
+                <div class="more">
+                  <img src="/img/ic-plus-light.svg" alt="" />
+                </div>
+                <div class="image">
+                  <p></p>
+                  <img src="/images/dispatch-01-wh40k.jpg" alt="" />
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--                                main-work                                           -->
+
+      <section class="main-contact">
+        <div class="container">
+          <div class="contact-visual"></div>
+        </div>
+      </section>
+      <!--                                main-contact                                        -->
+
+      <section class="main-join">
+        <div class="container">
+          <div class="join-contents">
+            <h1 class="title title-join">우리는 CLEANERS입니다</h1>
+            <span class="desc desc-join"
+              >CLEANERS의 활동에 대해 더 알고싶으신가요?</span
+            >
+            <button class="btn btn-more btn-join">더 알아보기</button>
+          </div>
+          <div class="join-video">
+            <video
+              src="/video/cleaners-key-visual-mp4.mp4"
+              class="join-visual"
+              autoplay
+              loop
+              muted
+              playsinline
+            ></video>
+          </div>
+        </div>
+      </section>
+      <!--                                main-join                                           -->
+
+      <section class="main-news">
+        <div class="container">
+          <h1 class="title-news">NEWS</h1>
+          <span class="desc-news">CLEANSE의 새로운 소식들을 받아보십시오!</span>
+          <div class="swiper newsSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide news-slide">
+                Slide 1
+                <a class="news__article">
+                  <div class="thumnail thumnail-news">
+                    <span class="channel"> Smart maritime network </span>
+                    <img src="/images/cleaners-work-2.png" alt="" />
+                  </div>
+                  <div class="descript descript-news">
+                    <h5 class="lg">
+                      Singapore’s Smart Port Challenge announces 2022 start-up
+                      winners
+                    </h5>
+                    <p class="date">2022-11-18</p>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide news-slide">
+                Slide 2
+                <a class="news__article">
+                  <div class="thumnail thumnail-news">
+                    <span class="channel"> Smart maritime network </span>
+                    <img src="/images/assault-cleaner.jpg" alt="" />
+                  </div>
+                  <div class="descript descript-news">
+                    <h5 class="lg">
+                      Singapore’s Smart Port Challenge announces 2022 start-up
+                      winners
+                    </h5>
+                    <p class="date">2022-11-18</p>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide news-slide">
+                Slide 3
+                <a class="news__article">
+                  <div class="thumnail thumnail-news">
+                    <span class="channel"> Smart maritime network </span>
+                    <img src="/images/cleaners-fight-3.jpg" alt="" />
+                  </div>
+                  <div class="descript descript-news">
+                    <h5 class="lg">
+                      Singapore’s Smart Port Challenge announces 2022 start-up
+                      winners
+                    </h5>
+                    <p class="date">2022-11-18</p>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide news-slide">Slide 4</div>
+              <div class="swiper-slide news-slide">Slide 5</div>
+            </div>
+            <div class="swiper-pagination pagination-news"></div>
+          </div>
+        </div>
+      </section>
+      <!--                                main-news                                           -->
+    </main>
+
+    <footer class="footer" th:fragemnet="footer">
+      <div class="footer__inner">
+        <div class="footer__inner__area-info">
+          <h1>CLEANERS</h1>
+          <ul>
+            <li><a href="">ê°ì¸ì ë³´ì²ë¦¬ë°©ì¹¨</a></li>
+            <li><a href="">ì´ë©ì¼ë¬´ë¨ìì§ê±°ë¶</a></li>
+            <li><a href="">ë´ë¶ì ë³´ê´ë¦¬ê·ì </a></li>
+            <li><a href="">ì¬ì´í¸ë§µ</a></li>
+          </ul>
+          <div class="footer__inner__family-site">
+            <select class="family-site">
+              <option value="">JTF</option>
+              <option value="">OUTCAST</option>
+              <option value="">JOE PAGE</option>
+              <option value="">HOUSE CLEANING WITH FLAME</option>
+              <option value="">NEW YORK CITY</option>
+            </select>
+          </div>
+        </div>
+        <div class="footer__inner__area-location">
+          <p>
+            561 W 179th St #2, New York, NY 10033, United States <br />
+            Copyright 2013 by Danal Co., Ltd. All Rights Reserved.
+          </p>
+          <span
+            >[ì¸ì¦ë²ì] íµí© ê²°ì  íë«í¼ ë° ë³¸ì¸íì¸ ìë¹ì¤<br />[ì í¨ê¸°ê°]
+            2021.04.21 - 2024.04.20</span
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
