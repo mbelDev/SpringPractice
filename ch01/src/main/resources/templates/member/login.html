@@ -1,33 +1,74 @@
 <!DOCTYPE html>
 <html lang="kor" xmlns:th="ww.thymeleaf.org">
-  <head th:replace="/include/include.html :: head"></head>
+  <head th:replace="/include/include.html :: head(~{::link})">
+    <link rel="stylesheet" href="/css/member.css">
+  </head>
   <body>
     <header th:replace="/include/include.html :: header"></header>
     <main class="main">
       <!-- <section th:replace="/include/include.html :: sub-header"></section> -->
-      <section class="login__title">
-        <div class="container">
-          <h1>환영합니다 형제님!!</h1>
-        </div>
-      </section>
-      <section class="login__contents">
-        <div class="container">
-          <div class="login__input">
-            <div class="login__item">
-              <span class="login__subtxt">아이디</span
-              ><input type="text" name="" userID />
+     <section class="login">
+    <div class="container center">
+      <div class="login__title">
+        <h1 class="login__title-txt">환영합니다 형제여! 우리는 CLEANERS 입니다!!</h1>
+      </div>
+      <div class="login__table">
+        <form action="./loginProcess" method="POST">
+          <div class="login__contents-table">
+              <div class="item">
+                <span class="login-txt">아이디</span>
+
+                  <input
+                    type="text"
+                    class="login-input login-id"
+                    name="userID"
+                    id="userID"
+                    value=""
+                    placeholder="아이디를 입력해 주세요"
+                  />
+              </div>
+              <div class="item">
+                <span class="login-txt">비밀번호</span>
+                <input
+                  type="password"
+                  class="login-input login-pw"
+                  name="userPW"
+                  id="userPW"
+                  placeholder="비밀번호를 입력 해 주세요."
+                />
+              </div>
             </div>
-            <div class="login__item">
-              <span class="login__subtxt">패스워드</span
-              ><input type="password" name="" userPW />
-            </div>
+          <div>
+            <button class="btn confirm">로그인</button>
+            <button class="btn join">
+              <a href="./join">회원가입</a>
+            </button>
+            <input type="checkbox" name="rememberID" value="yes" /><span
+              >아이디 기억하기</span
+            >
           </div>
-          <div class="lgin__btns"></div>
-          <span>회원가입</span>
-          <span>아이디/비밀번호 찾기</span>
-        </div>
-      </section>
+        </form>
+      </div>
+    </div>
+  </section>
     </main>
     <footer th:replace="include/include.html :: footer"></footer>
+
+    <script>
+  //jQuery alias  $
+  $(".confirm").on("click", function () {
+    if ($("#userID").val() === "") {
+      alert("아이디를 입력 해 주세요.");
+      $("userID").focus();
+      return false;
+    }
+    if ($("#userPW").val() === "") {
+      alert("비밀번호를 입력 해 주세요.");
+      $("userPW").focus();
+      return false;
+    }
+  });
+</script>
+
   </body>
 </html>

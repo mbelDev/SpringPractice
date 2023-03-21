@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="kor" xmlns="http://www.thymeleaf.org">
-  <head th:replace="/include/include.html :: head"></head>
-
+  <head th:replace="/include/include.html :: head(~{::link})"></head>
+  <link rel="stylesheet" href="">
   <body>
     <header th:replace="/include/include.html :: header"></header>
 

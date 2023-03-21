@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="kor" xmlns:th="ww.thymeleaf.org">
-<head th:replace="/include/include.html :: head"></head>
+<head th:replace="/include/include.html :: head(~{::link})">
+    <link rel="stylesheet" href="">
+</head>
 <body>
     <header th:replace="/include/include.html :: header"></header>
     <main class="main">
