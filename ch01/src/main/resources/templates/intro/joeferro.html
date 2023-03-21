@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="kor" xmlns:th="ww.thymeleaf.org">
-  <head th:replace="/include/include.html :: head"></head>
-  <body>
-    <header th:replace="/include/include.html :: header"></header>
-    <main class="main">
-      <!-- <section th:replace="/include/include.html :: sub-header"></section> -->
-      <section class="joe__title">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{include/layout}">
+
+<!-- 개별 요소 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/static.css" >
+</th:block>
+<th:block layout:fragment="script">
+    <!--  script  -->
+</th:block>
+
+<!-- Content -->
+<th:block layout:fragment="content">
+  <main class="main">
+    <!-- <section th:replace="/include/include.html :: sub-header"></section> -->
+      <section class="joe__intro">
         <div class="container">
-          <h1>우리는 CLEANERS입니다!!</h1>
+          <h1>JOE FERRO, 우리의 친구!</h1>
+          <img src="/images/maxresdefault (1).jpg" alt="우리의 동지 조 페로!">
         </div>
       </section>
       <section class="joe__contents">
@@ -17,6 +29,6 @@
         </div>
       </section>
     </main>
-    <footer th:replace="include/include.html :: footer"></footer>
   </body>
+</th:block>
 </html>

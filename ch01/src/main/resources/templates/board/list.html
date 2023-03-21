@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html lang="kor" xmlns="http://www.thymeleaf.org">
-<head th:replace="/include/include.html :: head">
-</head>
-<body>
-    <header th:replace="/include/include.html :: header"></header>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{include/layout}">
+
+<!-- 개별 요소 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/board.css" >
+</th:block>
+<th:block layout:fragment="script">
+    <!--  script  -->
+</th:block>
+
+<!-- Content -->
+<th:block layout:fragment="content">
+
 
     <main class="main">
         <p>list입니다.</p>
@@ -43,4 +54,5 @@
     
     <footer th:replace="/include/include.html :: footer"></footer>
 </body>
+</th:block>
 </html>

@@ -153,10 +153,11 @@
 .header .header-right .btn-header-right {
   background: #4e4e4e;
 }
-.header .container {
+.header-container {
   display: block;
   width: 1200px;
   height: auto;
+  margin: 0 auto;
 }
 
 .main {
@@ -290,4 +291,4 @@
 a {
   color: inherit;
   text-decoration: none;
-}/*# sourceMappingURL=layout.css.map */
+}

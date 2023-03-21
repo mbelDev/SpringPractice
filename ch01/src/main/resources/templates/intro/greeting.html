@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html lang="kor" xmlns:th="ww.thymeleaf.org">
-  <head th:replace="/include/include.html :: head"></head>
-  <body>
-    <header th:replace="/include/include.html :: header"></header>
-    <main class="main">
-      <!-- <section th:replace="/include/include.html :: sub-header"></section> -->
-      <section class="greeting__title">
-        <div class="container">
-          <h1>우리는 CLEANERS입니다!!</h1>
-        </div>
-      </section>
-      <section class="greeting__contents">
-        <div class="container">
-          <span>클리너들에 대한 설명</span>
-          <span>클리너들의 활동사진</span>
-        </div>
-      </section>
-    </main>
-    <footer th:replace="include/include.html :: footer"></footer>
-  </body>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{include/layout}">
+
+<!-- 개별 요소 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/board.css" >
+</th:block>
+<th:block layout:fragment="script">
+    <!--  script  -->
+</th:block>
+
+<!-- Content -->
+<th:block layout:fragment="content">
+  <main class="main">
+    <!-- <section th:replace="/include/include.html :: sub-header"></section> -->
+    <section class="greeting__intro-title">
+      <div class="container">
+        <h1 class="greeting__intro-title-txt">반갑습니다 형제님! 우리는 CLEANERS입니다!</h1>
+        <span class="greeting__intro-context">그린플루 사태 이후 우리는 춥고 어두운 시간을 견뎌왔습니다. 우리 모두는 소중한 사람과 일상과 평화와 작별하였습니다. 이 모든것을 제자리로 돌려놓기 위해 우리 CLEANERS는 JOE FERRO의 기치아래 모여 이 바이러스가 사라질 그 날 까지 싸우겠습니다.</span>
+        <img src="/images/our-work-2.jpg" alt="길거리의 오염물질을 소각하는 클리너들">
+      </div>
+    </section>
+  </main>
+</body>
+</th:block>
 </html>
