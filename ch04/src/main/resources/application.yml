@@ -1,0 +1,31 @@
+server:
+  port:  8082
+
+spring:
+  # for beautiful spring log
+  output:
+    ansi:
+      enabled:  always
+  thymeleaf:
+    check-template-location:  true
+    prefix:  classpath:/templates/
+    suffix:  .html
+    cache:  false
+  # oracle DB connect
+  datasource:
+    driver-class-name:  oracle.jdbc.driver.OracleDriver
+    url:  jdbc:oracle:thin:@localhost:1521:xe
+    username:  gundam
+    password:  EFSFsaikou0079
+
+logging:
+  level:
+    root:
+      '[com.kwondev.ch04]':  DEBUG
+
+       
+# mybatis mapping
+mybatis:
+# mapper.xml location
+  mapper-locations:  classpath:sqlmapper/mapper/*.xml
+  config-location:  classpath:sqlmapper/config/config.xml

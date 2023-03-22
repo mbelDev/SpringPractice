@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{include/layout}">
+
+<!-- 개별 요소 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/board.css" >
+</th:block>
+<th:block layout:fragment="script">
+    <!--  script  -->
+</th:block>
+
+<!-- Content -->
+<th:block layout:fragment="content">
+
+
+<main class="main">
+	<p>view입니다.</p>
+	<div class="post">
+		<div class="container">
+			<table>
+				<tbody>
+					<tr class="post-no">
+						<td>No.</td>
+						<th th:text="${boardDto.postNo }">글 번호</th>
+					</tr>
+					<tr class="post-title">
+						<td>제목</td>
+						<th th:text="${boardDto.postTitle }">글 제목</th>
+					</tr>
+					<tr class="post-author">
+						<td>글쓴이</td>
+						<th th:text="${boardDto.postAuth }">글 작성자</th>
+					</tr>
+					<tr class="post-date">
+						<td>작성일자</td>
+						<th th:text="${boardDto.regDate }">글 작성일자</th>
+					</tr>
+					<tr class="post-hits">
+						<td>작성일자</td>
+						<th th:text="${boardDto.postHits }">글 조회수</th>
+					</tr>
+					<tr class="post-contents">
+						<td>내용</td>
+						<th th:text="${boardDto.postCont }">글 본문</th>
+					</tr>
+				</tbody>
+			</table>
+			<div>
+				<button>
+					<a th:href="@{/board/modify(idx=${boardDto.postNo}) }">수정하기</a>
+				</button>
+				<button>
+					<a th:href="@{/board/delete(idx=${boardDto.postNo}) }">삭제하기</a>
+				</button>
+				<button>
+					<a href="/board/list">돌아가기</a>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="reply">
+		<div class="container">
+			
+		</div>
+	</div>
+</main>
+</th:block>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{include/layout}">
+
+<!-- 개별 요소 추가 -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/board.css" >
+</th:block>
+<th:block layout:fragment="script">
+    <!--  script  -->
+</th:block>
+
+<!-- Content -->
+<th:block layout:fragment="content">
+
+
+<main class="main">
+	<p>view입니다.</p>
+	<section class="post-delete">
+		<div class="container">
+            <form action="/board/post" method="DELETE">
+                <div class="confirm">
+                    <span class="delete-txt">게시글 비밀번호</span>
+                    <input type="password" name="postPW" class="postPW-confirm">
+                </div>
+                <div class="btns">
+                    <button class="confirm">
+                        <a th:href="@{/board/modify(idx=${postNo}) }">삭제하기</a>
+                    </button>
+                    <button>
+                        <a href="/board/list">돌아가기</a>
+                    </button>
+                </div>
+            </form>
+		</div>
+        
+	</section>
+</main>
+<script>
+     $(".confirm").on("click",()=>{
+        	const checkPW = $(".postPW-confirm").val();
+        	if (checkPW != ""){
+        		$.ajax({
+        			url:"/board/delete",
+                    type:"post",
+        			data:{postPW : checkPW},
+        			success:function(response){
+        				if(parseInt(response.count) === 1){
+                            
+        				}else{
+        					alert("비밀번호가 일치하지 않습니다.");
+        					$(".postPW-confirm").val("");
+        					$(".postPW-confirm").focus();
+        				}
+        			},
+        			fail:function(error){
+        				console.log(error);
+        			}
+        		});
+        	}else{
+        		alert("암호를 입력 해 주세요!");
+        		$(".postPW-confirm").focus();
+        	}
+        	return false;
+        });
+</script>
+</th:block>
+</html>

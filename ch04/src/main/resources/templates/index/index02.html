@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{include/layout}">
+
+<th:block layout:fragment="css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/board.css" >
+</th:block>
+
+<th:block layout:fragment="script">
+    <!-- 스크립트 -->
+</th:block>
+
+<!-- Content -->
+<th:block layout:fragment="content">
+    <main class="main">
+        <div class="container">
+            <h1>Content</h1>
+            <span>테스트중</span>
+        </div>
+    </main>
+</th:block>
+</html>
