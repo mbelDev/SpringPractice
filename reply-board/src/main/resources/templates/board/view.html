@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:replace="/include/include :: head"></head>
+<body>
+    <header th:replace="/include/include :: header"></header>
+    <main class="main">
+        <section class="board__view">
+            <div class="container">
+                <div class="board__view-title">
+                    <h2 class="mt-5 mb-3">글 쓰기</h2>
+                </div>
+                <div class="board__content mt-5">
+                    <div class="mb-3">
+                        <label for="" class="form-label">제목</label>
+                        <span th:text="${boardDto.postTitle}">제목</span>
+                      </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">작성자</label>
+                        <span th:text="${boardDto.postAuth}">작성자</span>
+                      </div>
+                      <div class="mb-3">
+                        <label for="" class="form-label">내용</label>
+                        <span th:text="${boardDto.postCont}">내용</span>
+                      </div>
+                </div>
+                <div class="board__btns mt-5 text-center">
+                    <button type="submit" class="btn btn-modify btn-primary btn-lg">수정</button>
+                    <button type="" class="btn btn-delete btn-secondary btn-lg">삭제</button>
+                    <button type="" class="btn btn-return btn-secondary btn-lg">게시판으로</button>
+                </div>
+                <div class="board__reply">
+                    <div class="mb-3" th:if="${replys} != null" th:Each="item : ${replys}">
+                        <span th:text="${item.replyCont}">덧글 내용</span>
+                        <span th:text="${item.postAuth}">덧글 작성자</span>
+                        <span th:text="${item.regDate}">2023-03-23</span>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="replyCont">
+                        <button>덧글달기</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer th:replace="/include/include :: footer"></footer>
+</body>
+</html>

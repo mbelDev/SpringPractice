@@ -1,0 +1,25 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.btn {
+  border: transparent;
+}
+
+.btn-scroll {
+  display: inline-block;
+  background: url(../img/main/bg_common.png) no-repeat;
+  vertical-align: middle;
+  font-size: 0;
+}
+
+.btn-more {
+  display: inline-block;
+  background: url(../img/main/bg_common.png) no-repeat;
+  vertical-align: middle;
+  font-size: 0;
+}
+
+.hidden {
+  display: none;
+}
