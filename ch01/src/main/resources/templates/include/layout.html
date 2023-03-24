@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>JOE FERRO'S CLEANER</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
+    <script src="/js/jquery-3.6.3.min.js"></script>
+
+    <th:block layout:fragment="css"></th:block>
+    <th:block layout:fragment="script"></th:block>
+</head>
+<body>
+    <!-- header 가져오기 -->
+    <header th:replace="/include/include :: header"></header>
+    <!-- contents 가져오기 -->
+    <th:block layout:fragment="content"></th:block>
+    <!-- footer 가져오기 -->
+    <footer th:replace="/include/include :: footer">
+</body>
+</html>
