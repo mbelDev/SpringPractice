@@ -1,36 +1,16 @@
 package com.kwondev.replyboard.service;
 
-import com.kwondev.replyboard.dao.ReplysDao;
 import com.kwondev.replyboard.dto.ReplysDto;
 import java.util.List;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.Map;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@Service
-@Slf4j
-public class ReplysService {
+public interface ReplysService {
+  List<ReplysDto> getReplys(int postNo);
 
-  @Autowired
-  ReplysDao replysDao;
+  int getMaxRegroup();
 
-  public ReplysService() {
-    log.info("==========ReplyService==========");
-  }
+  int insertReply(@RequestParam Map<String, String> map);
 
-  public int insertReply(ReplysDto replysDto) {
-    return replysDao.insertReply(replysDto);
-  }
-
-  public int getMaxRegroup() {
-    int result = 0;
-    result = replysDao.getMaxRegroup();
-    return result;
-  }
-
-  public List<ReplysDto> getReplys(int postNo) {
-    log.info("==========get Replys==========");
-    List<ReplysDto> replyList = replysDao.getReplys(postNo);
-    return replyList;
-  }
+  int deleteReplys(int replyNo);
 }

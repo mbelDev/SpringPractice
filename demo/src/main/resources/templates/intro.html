@@ -5,9 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="/js/jquery-3.6.3.min.js"></script>
 </head>
 <body>
     <h1>INTRODUCE OUR SELF!!</h1>
     <a href="/home">home</a>
+    <button class="test">테스트</button>
+
+    <input type="hidden" class="testNo" name="testNo" value="3">
+    <input type="text" class="testPW" name="testPW">
+    <button class="test-reply">덧글 전송 테스트</button>
+    <button class="test-replyMap">덧글 전송 테스트</button>
 </body>
+<script>
+    const testbtn = document.querySelector(".test");
+    testbtn.addEventListener("click",function(){
+        $.ajax({
+					url:"/txt01",
+					type:"GET",
+					success:function(response){
+						console.log(response);
+					},
+				});
+    })
+
+    $(".test-reply").on("click",function(){
+        var data={
+            "testNo" : $(".testNo").val(),
+            "testPW" : $(".testPW").val()
+        };
+        $.ajax({
+        
+            url:"/testResponse",
+            type:"POST",
+            data:JSON.stringify(data),
+            contentType:"application/json;charset=UTF-8",
+            success:function(response){
+                console.log(response);
+                console.log(data);
+            },
+        });
+    })
+
+    $(".test-replyMap").on("click",function(){
+        var reply={};
+        reply["testNo"] = $(".testNo").val();
+        reply["testPW"] = $(".testPW").val();
+        $.ajax({
+        
+            url:"/testResponseMap",
+            type:"POST",
+            data:reply,
+            success:function(response){
+                console.log(response);
+                console.log(reply);
+            },
+        });
+    })
+</script>
 </html>

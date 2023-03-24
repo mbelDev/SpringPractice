@@ -13,15 +13,15 @@
 
     <insert id="insertReply" parameterType="replysDto">
         INSERT INTO BOARD_CLEANER_REPLYS VALUES(
-            #{postNo}
+            #{postNo},
             BOARD_REPLYS_SEQ.NEXTVAL,
             #{replyAuth},
             #{replyPW},
             #{replyCont},
             SYSDATE,
-            #{reGroup},   <!-- REGROUP -->
-            #{reLevel},   <!-- RELEVE -->
-            #{reStep},   <!-- RESTEP -->
+            #{regroup},   <!-- REGROUP -->
+            #{relevel},   <!-- RELEVE -->
+            #{restep},   <!-- RESTEP -->
             1    <!-- AVAILABLE -->
         )
     </insert>

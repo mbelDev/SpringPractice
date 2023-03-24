@@ -14,7 +14,7 @@ public class ReplysDto {
   private int postNo;
   private int replyNo;
   private String replyAuth;
-  private String replayPW;
+  private String replyPW;
   private String replyCont;
   private String replyDate;
   private int regroup;

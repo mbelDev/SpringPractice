@@ -29,14 +29,19 @@
                     <button type="" class="btn btn-return btn-secondary btn-lg">게시판으로</button>
                 </div>
                 <div class="board__reply">
-                    <div class="mb-3" th:if="${replys} != null" th:Each="item : ${replys}">
-                        <span th:text="${item.replyCont}">덧글 내용</span>
-                        <span th:text="${item.postAuth}">덧글 작성자</span>
-                        <span th:text="${item.regDate}">2023-03-23</span>
+                    <div class="mb-3 reply-container" id="reply-container" th:if="${replys} != null">
+                        <!-- <span th:text="${replys}"></span> -->
+                        <div th:Each="item : ${replys}">
+                            <span th:text="${item.replyCont}">덧글 내용</span>
+                            <span th:text="${item.replyAuth}">덧글 작성자</span>
+                            <span th:text="${item.replyDate}">2023-03-23</span>
+                            <button class="btn-reply-delete">삭제</button>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <input type="text" name="replyCont">
-                        <button>덧글달기</button>
+                        <input type="hidden" class="postNo" name="postNo" th:value="${boardDto.postNo}">
+                        <input type="text" class="replyCont" name="replyCont">
+                        <button class="btn-reply">덧글달기</button>
                     </div>
                 </div>
             </div>
@@ -44,4 +49,26 @@
     </main>
     <footer th:replace="/include/include :: footer"></footer>
 </body>
+<script>
+    $(".btn-reply").on("click",()=>{
+        var data = {};
+        data["postNo"] = $(".postNo").val();
+        data["replyCont"] = $(".replyCont").val();
+        data["replyAuth"] = "테스트";
+        data["replyPW"] = "테스트";
+        $.ajax({
+            url:"/board/writeReply",
+            type:"POST",
+            data:data,
+            success:function(response){
+                console.log(response);
+                    alert("댓글이 등록되었습니다.");
+            },
+        })
+        .done(function( fragment ){
+            $("#reply-container").replaceWith(fragment);
+        });
+    })
+
+</script>
 </html>

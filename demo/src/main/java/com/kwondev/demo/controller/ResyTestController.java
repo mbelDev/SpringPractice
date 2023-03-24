@@ -1,12 +1,18 @@
 package com.kwondev.demo.controller;
 
+import com.kwondev.demo.dto.BoardDto;
 import com.kwondev.demo.dto.MemberDto;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Slf4j
 public class ResyTestController {
 
   // @Controller와 차이
@@ -69,5 +75,38 @@ public class ResyTestController {
     arrayList.add(member02);
 
     return arrayList;
+  }
+
+  @PostMapping("/testResponse")
+  public BoardDto insert(Map<String, Object> replyMap) {
+    BoardDto testDto = new BoardDto();
+    String testNo = String.valueOf(replyMap.get("testNo"));
+    String testPW = String.valueOf(replyMap.get("testPW"));
+    testDto.setPostTitle(testNo);
+    testDto.setPostPW(testPW);
+    testDto.setPostAuth("testAuth");
+    testDto.setPostCont("testCont");
+
+    log.info("replyMap === {}", replyMap);
+    log.info("testPW === {}", replyMap.get("testPW"));
+    log.info("testPWvalueOf === {}", String.valueOf(replyMap.get("testPW")));
+
+    return testDto;
+  }
+
+  @PostMapping("/testResponseMap")
+  public BoardDto insertTest(@RequestParam Map<String, Object> replyMap) {
+    BoardDto testDto = new BoardDto();
+    String testNo = String.valueOf(replyMap.get("testNo"));
+    String testPW = String.valueOf(replyMap.get("testPW"));
+    testDto.setPostTitle(testNo);
+    testDto.setPostPW(testPW);
+    testDto.setPostAuth("testAuth");
+    testDto.setPostCont("testCont");
+    log.info("replyMap === {}", replyMap);
+    log.info("testNo === {}", testNo);
+    log.info("testPW === {}", testPW);
+
+    return testDto;
   }
 }
