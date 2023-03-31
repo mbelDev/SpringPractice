@@ -1,6 +1,7 @@
 package com.kwondev.ch04.model;
 
 import java.util.ArrayList;
+import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -9,7 +10,7 @@ public interface BoardDao {
 
   public BoardDto getSelectOne(int postNo); // view post 에서 요구
 
-  public String checkPW(int postNo); // 수정 삭제시 필요
+  public int checkPW(Map map); // 수정 삭제시 필요
 
   public void insertBoard(BoardDto boardDto); // write post 에서 요구
 

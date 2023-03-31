@@ -31,12 +31,15 @@ public class BoardService {
     return boardDto;
   }
 
-  public String checkPW(int postNo, String postPW) {
+  public Boolean checkPW(int postNo, String postPW) {
     boolean result = false;
     Map<String, String> map = new HashMap<String, String>();
     map.put("postNo", Integer.toString(postNo));
     map.put("postPW", postPW);
-    int count = boardDao.checekPW(map);
+    int count = boardDao.checkPW(map);
+    if (count > 0) {
+      result = true;
+    }
     return result;
   }
 
