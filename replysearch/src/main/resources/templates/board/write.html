@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:fragment="head">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    
+        <script src="/js/jquery-3.6.3.min.js"></script>
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/summernote-lite.js"></script>
+        <link rel="stylesheet" href="/css/summernote-lite.css">
+
+    </head>
+
+</head>
+<body>
+    <header th:replace="/include/include :: header"></header>
+     
+    <main class="main" id="main">
+        <section class="board__write">
+            <div class="container">
+                <div class="board__write-title">
+                    <h2 class="mt-5 mb-3">글 쓰기</h2>
+                </div>
+                <form action="/board/write" method="post">
+                    <div class="board__content mt-5">
+                        <div class="mb-3">
+                            <label for="" class="form-label">제목</label>
+                            <input type="text" name="postTitle" class="form-control" placeholder="제목을 작성해 주세요.">
+                          </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">작성자</label>
+                            <input type="text" name="postAuth" class="form-control" placeholder="글쓴이">
+                          </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">비밀번호</label>
+                            <input type="password" name="postPW" class="form-control" placeholder="">
+                          </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">카테고리</label>
+                            <select name="postCTGR" id="">
+                                <option value="출동의뢰">출동의뢰</option>
+                                <option value="채용문의">채용문의</option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label for="" class="form-label">내용</label>
+                            <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="postCont"></textarea> -->
+                            <textarea id="summernote" name="postCont" rows="10"></textarea>
+                           
+                          </div>
+                    </div>
+                    <div class="board__btns mt-5 text-center">
+                        <button type="submit" class="btn btn-confurm btn-primary btn-lg">글쓰기</button>
+                        <button type="reset" class="btn btn-return btn-secondary btn-lg">돌아가기</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer th:replace="/include/include :: footer"></footer>
+    <script>
+        $('#summernote').summernote({
+          placeholder: 'Hello stand alone ui',
+          tabsize: 2,
+          height: 240,
+          toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+          ],
+          callbacks:{
+			onImageUpload:function(files){
+				console.log("이미지 첨부 됨");
+				console.log(files);
+				
+				for(let i=0 ; i<files.length ; i++){
+					uploadImage(files[i],this);
+				}
+				
+			}
+		}
+        });
+
+
+        function uploadImage(file,editor){
+		
+		const sendData = new FormData(); // key:value <form><input type="file" name="uploadFile"></fror>
+		sendData.append("uploadFile",file);
+		console.log("sendData"+sendData);
+		$.ajax({
+			url:"/board/upload",
+			type:"POST",
+			data:sendData,
+			contentType:false, //enctype="x-www.form-urlencoded" 를 사용하지 않음. = multipart/data를 사용.
+			processData:false, // QueryString으로 날아가는것을 막음.
+			success:function(response){
+				console.log("response"+response);
+				$(editor).summernote("editor.insertImage",response.fileUrl);
+			},
+			error:function(){
+				console.log("파일 업로드 실패");
+			}
+		})
+	}
+      </script>
+</body>
+
+</html>

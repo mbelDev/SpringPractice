@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kwondev.replysearch.dao.BoardDao">
+
+<!-- SELECT -->
+
+  <sql id="search">
+    <if test="category != null and searchTxt != ''">
+              <choose>
+                <when test="category == 'all' ">
+                  WHERE 
+                  (postTitle LIKE '%' || #{searchTxt} || '%') OR
+                  (postAuth LIKE '%' || #{searchTxt} || '%') OR
+                  (postCont LIKE '%' || #{searchTxt} || '%')
+                </when>
+                <when test="category == 'title' ">
+                WHERE 
+                  (postTitle LIKE '%' || #{searchTxt} || '%') 
+                </when>
+                <when test="category == 'auth' ">
+                WHERE 
+                  (postAuth LIKE '%' || #{searchTxt} || '%') 
+                </when>
+                <when test="category == 'content' ">
+                WHERE 
+                  (postCont LIKE '%' || #{searchTxt} || '%') 
+                </when>
+              </choose>
+            </if>
+  </sql>
+
+  <!-- 글 목록 전체 받아오기 -->
+   <select id="getPostList" parameterType="HashMap" resultType="BoardDto">
+    		SELECT * FROM
+		    (SELECT ROWNUM AS NUM,B.* FROM
+		        (SELECT * FROM BOARD_CLEANER
+              <include refid="search" />            
+             ORDER BY POSTNO DESC) B
+		    )
+  </select>
+
+  <!-- 전체 글 갯수 받아오기 -->
+  <select id="getPostTotal" resultType="Integer">
+	  SELECT COUNT(*) AS TOTAL FROM BOARD_CLEANER <include refid="search" />      
+  </select>
+
+  <!-- 페이지 단위로 받아오기 -->
+	<select id="getBoardPage" resultType="BoardDto" 
+	parameterType="HashMap">
+		SELECT * FROM
+		    (SELECT ROWNUM AS NUM,B.* FROM
+		        (SELECT * FROM BOARD_CLEANER 
+              <include refid="search" />
+            ORDER BY POSTNO DESC) B
+		    ) WHERE NUM <![CDATA[>=]]> #{start} AND NUM <![CDATA[<=]]> #{end}
+	</select>
+
+  <!-- 글 하나만 받아오기 -->
+  <select id="getPost" parameterType="Integer" resultType="BoardDto">
+	  select * from BOARD_CLEANER WHERE POSTNO = #{postNO}
+  </select>
+
+  <!-- 글 암호 확인 -->
+  <select id="checkPW" parameterType="HashMap" resultType="Integer">
+	  SELECT COUNT(*) FROM BOARD_CLEANER WHERE postNO = #{postNo} and postPW = #{postPW};
+  </select>
+
+  <!-- INSERT -->
+  <insert id="insertPost" parameterType="BoardDto">
+	  INSERT INTO BOARD_CLEANER VALUES(BOARD_CLEANER_SEQ.NEXTVAL,#{postAuth},#{postPW},#{postCTGR},#{postTitle},#{postCont},SYSDATE,0)
+  </insert>
+  
+  <!-- UPDATE-->
+  <update id="updateHits" parameterType="Integer">
+	  UPDATE BOARD_CLEANER SET POSTHITS=POSTHITS+1 WHERE POSTNO = #{postNo}
+  </update>
+  <update id="updatePost" parameterType="BoardDto">
+	  UPDATE BOARD_CLEANER SET postCTGR = #{postCTGR}, postTitle = #{postTitle}, postCont = #{postCont} WHERE postNO = #{postNo} 
+  </update>
+
+  <!-- DELETE -->
+  <delete id="deletePost" parameterType="Integer">
+	  DELETE FROM BOARD_CLEANER WHERE POSTNO = #{postNo}
+  </delete>
+
+</mapper>

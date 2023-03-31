@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head th:replace="/include/include :: head">
+</head>
+<body class="text-center">
+    <header th:replace="/include/include :: header"></header>
+    <main class="main">
+        <main class="form-signin w-100 m-auto">
+          <form action="/member/join" method="post" class="joinForm" th:object="${memberDto}" enctype="multipart/form-data">
+              <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+              <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+          <input type="hidden" name="userID" th:value="test">
+          <span th:text="${msg}"></span>
+              <div class="form-floating">
+                <input type="email" class="form-control join-email" id="floatingInput" placeholder="name@example.com" name="userEM">
+                <label for="floatingInput">Email address</label>
+                <p th:if="${#fields.hasErrors('userEM')}" th:errorclass="errorTxt" th:errors="*{userEM}"></p>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control join-pw" id="floatingPassword" placeholder="Password" name="userPW">
+                <label for="floatingPassword">Password</label>
+                <p th:if="${#fields.hasErrors('userPW')}" th:errorclass="errorTxt" th:errors="*{userPW}">Inco</p>
+              </div>
+              <div class="form-floating">
+                <input type="text" class="form-control join-name" id="floatingInput" placeholder="Akemi Homura" name="userNM">
+                <label for="floatingInput">Your name</label>
+                <p th:if="${#fields.hasErrors('userNM')}" th:errorclass="errorTxt" th:errors="*{userNM}"></p>
+              </div>
+              
+              //프로필 사진
+              <div class="mb-3">
+                <input class="form-control" type="file" id="formFile" name="userIcon">
+              </div>
+
+              <hr>
+              <button class="w-100 btn btn-lg btn-primary btn-sign-in" type="submit">Sign in</button>
+              <hr>
+              <button class="w-100 btn btn-lg btn-primary btn-log-in" type="submit">Log in</button>
+              <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
+            </form>
+          </main>
+        </main>
+        <footer th:replace="/include/include :: footer"></footer>
+        </body>
+        <script>
+            $(".btn-sign-in").on("click",()=>{
+                if($(".join-email").val() == ""){
+        
+                    alert("검색어를 입력 해 주세요.");
+                    return false;
+                }
+            })
+        </script>
+        </html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kwondev.replysearch.dao.MemberDao">
+
+<!-- SELECT -->
+
+
+  <!-- 글 하나만 받아오기 -->
+  <select id="mem_info" parameterType="MemberDto" resultType="MemberDto">
+	  select * from BOARD_CLEANER WHERE POSTNO = #{postNO}
+  </select>
+
+  <!-- INSERT -->
+  <insert id="mem_join" parameterType="MemberDto">
+	  SELECT COUNT(*) from BOARD_CLEANER WHERE POSTNO = 2
+  </insert>
+  
+  <!-- UPDATE-->
+  <update id="mem_update" parameterType="BoardDto">
+	  UPDATE BOARD_CLEANER SET postCTGR = #{postCTGR}, postTitle = #{postTitle}, postCont = #{postCont} WHERE postNO = #{postNo} 
+  </update>
+
+  <!-- DELETE -->
+  <delete id="mem_redraw" parameterType="Integer">
+	  DELETE FROM BOARD_CLEANER WHERE POSTNO = #{postNo}
+  </delete>
+
+</mapper>

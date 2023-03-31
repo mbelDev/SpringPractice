@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head th:replace="/include/include :: head">
+</head>
+<body class="text-center">
+    <header th:replace="/include/include :: header"></header>
+    <main class="main">
+        <main class="form-signin w-100 m-auto">
+            <form>
+              <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+              <h1 class="h3 mb-3 fw-normal">Please Log in</h1>
+          
+              <div class="form-floating">
+                <input type="email" class="form-control join-email" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control join-pw" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+          
+              <div class="checkbox mb-3">
+                <label>
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label>
+              </div>
+              <hr>
+              <button class="w-100 btn btn-lg btn-primary btn-log-in" type="submit">Log in</button>
+              <hr>
+              <button class="w-100 btn btn-lg btn-primary btn-sign-in" type="submit">Sign in</button>
+              <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
+            </form>
+          </main>
+        </main>
+        <footer th:replace="/include/include :: footer"></footer>
+        </body>
+        <script>
+            $(".btn-sign-in").on("click",()=>{
+                if($(".join-email").val() == ""){
+        
+                    alert("검색어를 입력 해 주세요.");
+                    return false;
+                }
+            })
+        </script>
+        </html>
